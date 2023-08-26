@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pomodoro Timer</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.7/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="min-h-screen flex items-center justify-center bg-gray-100">
+    <div class="bg-white p-8 rounded shadow-lg">
+      <h1 class="text-2xl font-semibold mb-4">Pomodoro Timer</h1>
+      <div class="text-center">
+        <p id="timer" class="text-4xl font-bold">25:00</p>
+        <button id="startButton" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 mt-4 rounded">Start</button>
+        <button id="resetButton" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 mt-4 rounded">Reset</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const timerElement = document.getElementById("timer");
+const startButton = document.getElementById("startButton");
+const resetButton = document.getElementById("resetButton");
+
+let minutes = 25;
+let seconds = 0;
+let isTimerRunning = false;
+let intervalId;
+
+function updateTimerDisplay() {
+  timerElement.textContent = `${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
+}
+
+function startTimer() {
+  if (!isTimerRunning) {
+    intervalId = setInterval(() => {
+      if (seconds === 0) {
+        if (minutes === 0) {
+          clearInterval(intervalId);
+          isTimerRunning = false;
+          alert("Pomodoro session completed!");
+          return;
+        }
+        minutes--;
+        seconds = 59;
+      } else {
+        seconds--;
+      }
+      updateTimerDisplay();
+    }, 1000);
+    isTimerRunning = true;
+  }
+}
+
+function resetTimer() {
+  clearInterval(intervalId);
+  isTimerRunning = false;
+  minutes = 25;
+  seconds = 0;
+  updateTimerDisplay();
+}
+
+startButton.addEventListener("click", startTimer);
+resetButton.addEventListener("click", resetTimer);
+  </script>
+</body>
+</html>
