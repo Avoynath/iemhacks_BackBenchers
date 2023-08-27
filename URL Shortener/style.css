@@ -1,12 +1,27 @@
-.container{
-    background-color:rgb(228, 228, 241) ;
-    display: flex;
-    margin: 0;
+.container {
+    background-color: rgb(228, 241, 233);
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 100vh; /* Added for better vertical alignment */
 }
-.header{
-    margin: auto;
-    display: block;
+
+.input-container {
+    display: flex;
+    align-items: center;
+}
+
+label {
+    margin-right: 10px;
+}
+
+button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
 }
