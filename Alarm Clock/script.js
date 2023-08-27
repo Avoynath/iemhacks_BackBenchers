@@ -1,5 +1,4 @@
 
-// variables
 
 let alarmListArr = [];
 const selectMenu = document.querySelectorAll("select");
@@ -7,9 +6,9 @@ const setAlarmBtn = document.querySelector("#btn-setAlarm");
 let alarmCount = 0;
 let alarmTime;
 let ring = new Audio("clock-alarm-8761.mp3");
-
-
-// Script for Time and Date
+ring.loop = true;
+ring.preload = "auto";
+let alarmTimeout;
 
 
 function updateClock(){
@@ -62,7 +61,7 @@ function initClock() {
 }
 
 
-//Set Alarm section
+
 
 
 for(let i=12; i>0;i--){
@@ -102,13 +101,18 @@ function setAlarm(){
         alarmTime = `${selectMenu[0].value}:${selectMenu[1].value}:00 ${selectMenu[2].value}`;
         alarmListArr.push(alarmTime);
         console.log(document.querySelector(".btn-delete").value);
+
+    clearTimeout(alarmTimeout);
+    alarmTimeout = setTimeout(() => {
+        stopAlarm();
+    }, 60000);
     }
 
 }
 
 setAlarmBtn.addEventListener("click",setAlarm);
 
-//delete alarm
+
 
 function deleteAlarm(click_id){
     var element = document.getElementById("alarm"+click_id);
@@ -120,4 +124,5 @@ function deleteAlarm(click_id){
 function stopAlarm(){
     ring.pause();
     document.querySelector("#stopAlarm").style.visibility= "hidden";
+    clearTimeout(alarmTimeout);
 }

@@ -14,14 +14,20 @@
         <p id="timer" class="text-4xl font-bold">25:00</p>
         <button id="startButton" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 mt-4 rounded">Start</button>
         <button id="resetButton" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 mt-4 rounded">Reset</button>
+
+        <audio id="audioPlayer">
+          <source src="alarm-clock-short-6402.mp3" type="audio/mpeg">
+          Your browser does not support the audio element.
+        </audio>
       </div>
     </div>
   </div>
 
   <script>
-    const timerElement = document.getElementById("timer");
+const timerElement = document.getElementById("timer");
 const startButton = document.getElementById("startButton");
 const resetButton = document.getElementById("resetButton");
+const audioPlayer = document.getElementById("audioPlayer");
 
 let minutes = 25;
 let seconds = 0;
@@ -39,7 +45,7 @@ function startTimer() {
         if (minutes === 0) {
           clearInterval(intervalId);
           isTimerRunning = false;
-          alert("Pomodoro session completed!");
+          audioPlayer.play(); // Play the audio
           return;
         }
         minutes--;
@@ -63,6 +69,8 @@ function resetTimer() {
 
 startButton.addEventListener("click", startTimer);
 resetButton.addEventListener("click", resetTimer);
+
+
   </script>
 </body>
 </html>

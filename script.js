@@ -5,12 +5,23 @@ const timezone = document.getElementById('time-zone');
 const countryEl = document.getElementById('country');
 const weatherForecastEl = document.getElementById('weather-forecast');
 const currentTempEl = document.getElementById('current-temp');
+const Ala = document.getElementById('1');
+const calc = document.getElementById('2');
+const count = document.getElementById('3');
+const notes = document.getElementById('4');
+const pom = document.getElementById('5');
+const QR = document.getElementById('6');
+const STC = document.getElementById('7');
+const stop = document.getElementById('8');
+const tdl = document.getElementById('9');
 
 
 const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
 const API_KEY ='49cc8c821cd2aff9af04c9f98c36eb74';
+
+
 
 setInterval(() => {
     const time = new Date();
@@ -103,3 +114,31 @@ function showWeatherData (data){
 
     weatherForecastEl.innerHTML = otherDayForcast;
 }
+
+document.getElementById("1").addEventListener("click", function() {
+    window.location.href = "/Alarm Clock/index.html";
+  });
+document.getElementById("2").addEventListener("click", function() {
+    window.location.href = "/Calculator/index.html";
+  });
+document.getElementById("3").addEventListener("click", function() {
+    window.location.href = "/Countdown Timer/index.html";
+  });
+document.getElementById("4").addEventListener("click", function() {
+    window.location.href = "/Notes/index.html";
+  });
+document.getElementById("5").addEventListener("click", function() {
+    window.location.href = "/Pomodoro Timer/index.html";
+  });
+document.getElementById("6").addEventListener("click", function() {
+    window.location.href = "/QR Code Generator/index.html";
+  });
+document.getElementById("7").addEventListener("click", function() {
+    window.location.href = "/Speech to text converter/index.html";
+  });
+document.getElementById("8").addEventListener("click", function() {
+    window.location.href = "/Stopwatch/index.html";
+  });
+document.getElementById("9").addEventListener("click", function() {
+    window.location.href = "/ToDo List/index.html";
+  });
